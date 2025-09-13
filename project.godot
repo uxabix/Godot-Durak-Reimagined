@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="DurakGame"
+run/main_scene="uid://bl26c2y57d6rm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

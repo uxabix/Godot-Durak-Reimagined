@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxr7phpxd7qol"]
+
+[ext_resource type="Texture2D" uid="uid://brrttor4k8y5r" path="res://icon.svg" id="1_pedkj"]
+
+[node name="Card" type="Node2D"]
+
+[node name="Bg" type="ColorRect" parent="."]
+offset_right = 200.0
+offset_bottom = 350.0
+color = Color(0.74558, 0.74558, 0.74558, 1)
+
+[node name="Rank" type="Label" parent="."]
+offset_left = 77.0
+offset_top = 163.0
+offset_right = 119.0
+offset_bottom = 254.0
+theme_override_colors/font_color = Color(0.136826, 0.136826, 0.136826, 1)
+theme_override_font_sizes/font_size = 66
+text = "K"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 65.0
+offset_top = 109.0
+offset_right = 128.0
+offset_bottom = 172.0
+texture = ExtResource("1_pedkj")
+expand_mode = 1
