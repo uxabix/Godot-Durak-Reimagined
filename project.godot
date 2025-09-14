@@ -14,3 +14,8 @@ config/name="DurakGame"
 run/main_scene="uid://bl26c2y57d6rm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
