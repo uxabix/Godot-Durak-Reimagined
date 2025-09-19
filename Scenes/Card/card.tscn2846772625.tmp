@@ -18,7 +18,6 @@ texture = ExtResource("1_pedkj")
 scale = Vector2(4.9999995, 4.9999995)
 
 [node name="Suits" type="Node2D" parent="Images"]
-visible = false
 
 [node name="1" type="Sprite2D" parent="Images/Suits"]
 position = Vector2(-18, -30)
@@ -76,18 +75,20 @@ scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
 [node name="Rank" type="Sprite2D" parent="Images"]
+visible = false
 position = Vector2(0.99999994, -0.99999994)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_c0g18")
 
 [node name="Ranks" type="Node2D" parent="."]
+position = Vector2(-199.99997, -299.99994)
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="Rank_Top_Left" type="Label" parent="Ranks"]
-offset_left = -168.00002
-offset_top = -288.00003
-offset_right = -135.00002
-offset_bottom = -147.00003
+offset_left = 29.999985
+offset_top = 14.999952
+offset_right = 62.999985
+offset_bottom = 155.99995
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "J
@@ -97,10 +98,10 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Rank_Bottom_Right" type="Label" parent="Ranks"]
-offset_left = 172.00002
-offset_top = 272.00003
-offset_right = 205.00002
-offset_bottom = 413.00003
+offset_left = 372.0
+offset_top = 572.0
+offset_right = 405.0
+offset_bottom = 713.0
 rotation = 3.1415927
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50

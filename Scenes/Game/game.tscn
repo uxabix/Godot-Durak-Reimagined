@@ -4,8 +4,51 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Card" parent="." instance=ExtResource("1_mv0hc")]
-position = Vector2(179, 146)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Card2" parent="." instance=ExtResource("1_mv0hc")]
-position = Vector2(633, 167)
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(671, 183)
+suit = 2
+rank = 12
+
+[node name="Card2" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(935, 326)
+suit = 3
+rank = 4
+
+[node name="Card3" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(360, 155)
+suit = 1
+rank = 9
+
+[node name="Card4" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(525, 363)
+rank = 7
+
+[node name="Card8" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(694, 351)
+rank = 10
+
+[node name="Card9" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(336, 334)
+suit = 1
+rank = 11
+
+[node name="Card5" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(754, 514)
+rank = 6
+
+[node name="Card6" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(228, 496)
+
+[node name="Card7" parent="CanvasLayer/Control" instance=ExtResource("1_mv0hc")]
+position = Vector2(366, 558)
+rank = 1
