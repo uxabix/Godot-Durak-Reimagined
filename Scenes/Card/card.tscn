@@ -15,80 +15,82 @@ default_font_size = 49
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_yw1pg")
 
-[node name="Front" type="Sprite2D" parent="."]
+[node name="Front" type="Node2D" parent="."]
+
+[node name="Front" type="Sprite2D" parent="Front"]
 scale = Vector2(0.24999999, 0.24999999)
 texture = ExtResource("1_pedkj")
 
-[node name="Images" type="Node2D" parent="."]
+[node name="Images" type="Node2D" parent="Front"]
 scale = Vector2(4.9999995, 4.9999995)
 
-[node name="Suits" type="Node2D" parent="Images"]
+[node name="Suits" type="Node2D" parent="Front/Images"]
 visible = false
 
-[node name="1" type="Sprite2D" parent="Images/Suits"]
+[node name="1" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(-18, -30)
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="2" type="Sprite2D" parent="Images/Suits"]
+[node name="2" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(0, -38)
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="3" type="Sprite2D" parent="Images/Suits"]
+[node name="3" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(18, -30)
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="4" type="Sprite2D" parent="Images/Suits"]
+[node name="4" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(-18, 0)
 rotation = -3.1415925
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="5" type="Sprite2D" parent="Images/Suits"]
+[node name="5" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(0, -13)
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="6" type="Sprite2D" parent="Images/Suits"]
+[node name="6" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(18, 0)
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="7" type="Sprite2D" parent="Images/Suits"]
+[node name="7" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(-18, 30)
 rotation = 3.1415927
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="8" type="Sprite2D" parent="Images/Suits"]
+[node name="8" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(0, 13)
 rotation = 3.1415927
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="9" type="Sprite2D" parent="Images/Suits"]
+[node name="9" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(18, 30)
 rotation = 3.1415927
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="10" type="Sprite2D" parent="Images/Suits"]
+[node name="10" type="Sprite2D" parent="Front/Images/Suits"]
 position = Vector2(0, 38)
 rotation = -3.1415925
 scale = Vector2(0.049206294, 0.04920631)
 texture = ExtResource("2_ac5pp")
 
-[node name="Rank" type="Sprite2D" parent="Images"]
+[node name="Rank" type="Sprite2D" parent="Front/Images"]
 position = Vector2(0.99999994, -0.99999994)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("4_c0g18")
 
-[node name="Ranks" type="Node2D" parent="."]
+[node name="Ranks" type="Node2D" parent="Front"]
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Control" type="Control" parent="Ranks"]
+[node name="Control" type="Control" parent="Front/Ranks"]
 custom_minimum_size = Vector2(11.235, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -101,7 +103,7 @@ offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Rank_Top_Left" type="Label" parent="Ranks/Control"]
+[node name="Rank_Top_Left" type="Label" parent="Front/Ranks/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.010638341
@@ -115,7 +117,7 @@ text = "J"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Rank_Bottom_Right" type="Label" parent="Ranks/Control"]
+[node name="Rank_Bottom_Right" type="Label" parent="Front/Ranks/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0130118
@@ -132,14 +134,14 @@ text = "J
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Suits" type="Node2D" parent="."]
+[node name="Suits" type="Node2D" parent="Front"]
 position = Vector2(-152.74995, -189.10298)
 scale = Vector2(0.14087297, 0.14087297)
 
-[node name="Suit_Top_Left" type="Sprite2D" parent="Suits"]
+[node name="Suit_Top_Left" type="Sprite2D" parent="Front/Suits"]
 texture = ExtResource("2_ac5pp")
 
-[node name="Suit_Bottom_Right" type="Sprite2D" parent="Suits"]
+[node name="Suit_Bottom_Right" type="Sprite2D" parent="Front/Suits"]
 position = Vector2(2184.5918, 2584.6191)
 rotation = -3.1415927
 texture = ExtResource("2_ac5pp")
