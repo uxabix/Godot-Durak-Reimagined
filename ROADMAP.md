@@ -6,10 +6,10 @@
 ## Phase 1: Core Gameplay (Prototype → Classic Game)
 
 v0.0 - "Prototype"
-- Placeholder menu, cards and game scene
+- [x] Placeholder menu, cards and game scene
 
 v0.1 - Basic Deck
-- Implement different suits and ranks
+- [x] Implement different suits and ranks
 - Create playing deck
 - Initial card dealing
 
