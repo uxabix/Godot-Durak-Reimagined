@@ -13,6 +13,8 @@ enum Suit {
 	SPADES
 }
 
+const FIRST_CARD_VALUE = 2
+
 enum Rank {
 	TWO,
 	THREE,
@@ -105,4 +107,7 @@ static func get_rank_name(rank: Rank) -> String:
 		Rank.JACK: return "Jack"
 		Rank.QUEEN: return "Queen"
 		Rank.KING: return "King"
+		Rank.ACE: return "Ace"
 		_: return ""
+
+const HAS_TEXTURE = [Rank.JACK, Rank.QUEEN, Rank.KING]

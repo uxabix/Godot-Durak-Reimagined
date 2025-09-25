@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxr7phpxd7qol"]
+[gd_scene load_steps=8 format=3 uid="uid://dxr7phpxd7qol"]
 
 [ext_resource type="Texture2D" uid="uid://d3xvjfuuljgo0" path="res://Scenes/Card/Textures/Front.png" id="1_pedkj"]
 [ext_resource type="Script" uid="uid://bqt8o8scntu57" path="res://Scenes/Card/card.gd" id="1_yw1pg"]
 [ext_resource type="Texture2D" uid="uid://left37rfalru" path="res://Scenes/Card/Textures/Suits/Hearts/Suit.png" id="2_ac5pp"]
 [ext_resource type="Texture2D" uid="uid://c3aili4lcy87a" path="res://Scenes/Card/Textures/Back.png" id="2_g0nif"]
 [ext_resource type="Texture2D" uid="uid://c5gqmarx3mays" path="res://Scenes/Card/Textures/Suits/Hearts/Ranks/Jack.png" id="4_c0g18"]
+[ext_resource type="FontFile" uid="uid://g6hwsrh5md1m" path="res://Assets/Fonts/OldNewspaperTypes-Regular.ttf" id="5_r5dc4"]
+
+[sub_resource type="Theme" id="Theme_r5dc4"]
+default_font = ExtResource("5_r5dc4")
+default_font_size = 49
 
 [node name="Card" type="Node2D"]
 scale = Vector2(0.25, 0.25)
@@ -83,31 +88,48 @@ texture = ExtResource("4_c0g18")
 [node name="Ranks" type="Node2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Rank_Top_Left" type="Label" parent="Ranks"]
-offset_left = -168.00002
-offset_top = -288.00003
-offset_right = -135.00002
-offset_bottom = -147.00003
+[node name="Control" type="Control" parent="Ranks"]
+custom_minimum_size = Vector2(11.235, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -188.0
+offset_top = -280.0
+offset_right = 188.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rank_Top_Left" type="Label" parent="Ranks/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.010638341
+anchor_right = 0.11702123
+offset_right = 33.0
+offset_bottom = 141.0
+theme = SubResource("Theme_r5dc4")
+theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-text = "J
-"
+text = "J"
 horizontal_alignment = 1
-vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Rank_Bottom_Right" type="Label" parent="Ranks"]
-offset_left = 172.00002
-offset_top = 272.00003
-offset_right = 205.00002
-offset_bottom = 413.00003
+[node name="Rank_Bottom_Right" type="Label" parent="Ranks/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0130118
+anchor_top = 0.9785714
+anchor_right = 1.1171958
+anchor_bottom = 0.9785714
+offset_right = 32.99997
+offset_bottom = 141.0
 rotation = 3.1415927
+theme = SubResource("Theme_r5dc4")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
 text = "J
 "
 horizontal_alignment = 1
-vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Suits" type="Node2D" parent="."]
