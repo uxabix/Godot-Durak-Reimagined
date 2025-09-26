@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cordan5jipxse"
-path="res://.godot/imported/Queen.png-0e7b8e3cb4b84f445cc2682bc8b44388.ctex"
+uid="uid://dea6b40r5o00j"
+path="res://.godot/imported/Suit.png-7cb0758f85660e38734ad21e8f59c726.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Card/Textures/Suits/Spades/Ranks/Queen.png"
-dest_files=["res://.godot/imported/Queen.png-0e7b8e3cb4b84f445cc2682bc8b44388.ctex"]
+source_file="res://Assets/Textures/Cards/Suits/Spades/Suit.png"
+dest_files=["res://.godot/imported/Suit.png-7cb0758f85660e38734ad21e8f59c726.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
