@@ -2,7 +2,7 @@
 extends Node2D
 
 # Preload the Card definitions containing enums and helper functions
-const Card = preload("res://Scripts/card_defines.gd")
+const Card = preload("res://Scripts/Defines/card_defines.gd")
 
 # Indicates whether the card is face-up (true) or face-down (false)
 @export var is_face_up: bool = true:
@@ -21,7 +21,7 @@ const Card = preload("res://Scripts/card_defines.gd")
 	set(value):
 		rank = value
 		set_textures()  # Update textures according to the rank
-		set_text()      # Update rank text if applicable
+		set_text()      # Updaste rank text if applicable
 
 # Type of the card (for game logic)
 @export var type: Card.Type
@@ -60,7 +60,7 @@ func set_textures():
 # Set textual representation of the card rank (for UI labels)
 func set_text():
 	for i in $Front/Ranks/Control.get_children():
-		var name = Card.get_rank_name(rank)
+		var name: String = Card.get_rank_name(rank)
 		# If rank name is empty, fallback to numerical value
 		name = str(rank + Card.FIRST_CARD_VALUE) if name == "" else name
 		# Display abbreviated name if too long
