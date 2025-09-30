@@ -18,6 +18,9 @@ func init(ruleset):
 func draw_card() -> CardData:
 	return null if cards.is_empty() else cards.pop_back() 
 
+func get_first() -> CardData:
+	return null if cards.is_empty() else cards[0]
+
 # Shuffles the deck
 func shuffle() -> void:
 	cards.shuffle()

@@ -13,6 +13,7 @@ func start_game():
 	self.ruleset = ruleset
 	deck = Deck.new()
 	deck.init(ruleset)
+	trump = deck.get_first().suit
 	discard_pile = DiscardPile.new()
 	# Initialize players, deal cards, etc.
 	for player in players:

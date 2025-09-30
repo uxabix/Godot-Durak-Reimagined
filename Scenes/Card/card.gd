@@ -23,9 +23,6 @@ const Card = preload("res://Scripts/Defines/card_defines.gd")
 		set_textures()  # Update textures according to the rank
 		set_text()      # Updaste rank text if applicable
 
-# Type of the card (for game logic)
-@export var type: Card.Type
-
 # Flip the card to show either front or back
 func flip():
 	$Front.visible = is_face_up
@@ -58,13 +55,18 @@ func set_textures():
 
 
 # Set textual representation of the card rank (for UI labels)
-func set_text():
+func set_text() -> void:
 	for i in $Front/Ranks/Control.get_children():
-		var name: String = Card.get_rank_name(rank)
+		var card_name: String = Card.get_rank_name(rank)
 		# If rank name is empty, fallback to numerical value
-		name = str(rank + Card.FIRST_CARD_VALUE) if name == "" else name
+		card_name = str(rank + Card.FIRST_CARD_VALUE) if card_name == "" else card_name
 		# Display abbreviated name if too long
-		i.text = name if len(name) < 3 else name[0]
+		i.text = card_name if len(card_name) < 3 else card_name[0]
+
+
+func init(data: CardData) -> void:
+	suit = data.suit
+	rank = data.rank
 
 # Called when the node enters the scene tree
 func _ready() -> void:
