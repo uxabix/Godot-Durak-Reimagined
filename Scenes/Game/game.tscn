@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c21jbfo7ww31x"]
+[gd_scene load_steps=6 format=3 uid="uid://c21jbfo7ww31x"]
 
 [ext_resource type="PackedScene" uid="uid://dxr7phpxd7qol" path="res://Scenes/Card/card.tscn" id="1_mv0hc"]
 [ext_resource type="Script" uid="uid://ci2dpyf87xojq" path="res://Scenes/Game/game.gd" id="1_qxfds"]
 [ext_resource type="FontFile" uid="uid://g6hwsrh5md1m" path="res://Assets/Fonts/OldNewspaperTypes-Regular.ttf" id="3_qikps"]
+[ext_resource type="PackedScene" uid="uid://drahpkjcher6g" path="res://Scenes/Hand/HandContainer.tscn" id="4_i1e5p"]
 
 [sub_resource type="Theme" id="Theme_i1e5p"]
 default_font = ExtResource("3_qikps")
@@ -66,3 +67,54 @@ grow_vertical = 0
 
 [node name="PreviewCard" parent="CanvasLayer/Control/DeckContainer/CardsContainer" instance=ExtResource("1_mv0hc")]
 is_face_up = false
+
+[node name="PlayerHand" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HandContainer" parent="CanvasLayer/Control/PlayerHand" instance=ExtResource("4_i1e5p")]
+vertical_offset = -20.0
+fan_angle = 30.0
+
+[node name="PreviewTrump2" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+position = Vector2(-200, -20)
+rotation = -0.2617994
+suit = 3
+
+[node name="PreviewTrump3" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+position = Vector2(-120, -43.51141)
+rotation = -0.15707964
+suit = 1
+rank = 1
+
+[node name="PreviewTrump4" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+position = Vector2(-40, -58.04226)
+rotation = -0.05235988
+suit = 2
+rank = 2
+
+[node name="PreviewTrump5" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+position = Vector2(40, -58.04226)
+rotation = 0.05235988
+rank = 3
+
+[node name="PreviewTrump7" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+position = Vector2(120, -43.51141)
+rotation = 0.15707964
+suit = 3
+rank = 4
+
+[node name="PreviewTrump8" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+position = Vector2(200, -20)
+rotation = 0.2617994
+suit = 1
+rank = 11
