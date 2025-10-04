@@ -1,8 +1,8 @@
 extends Node
 
-const Card = preload("res://Scripts/Defines/card_defines.gd")
+const cd = preload("res://Scripts/Defines/card_defines.gd")
 
-var trump: Card.Suit = Card.Suit.DIAMONDS
+var trump: cd.Suit = cd.Suit.DIAMONDS
 var ruleset: RulesetBase = preload("res://Scripts/Logic/Rulesets/ClassicRuleset.gd.gd").new()
 var deck: Deck = Deck.new()
 var discard_pile: DiscardPile

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxr7phpxd7qol"]
+[gd_scene load_steps=12 format=3 uid="uid://dxr7phpxd7qol"]
 
 [ext_resource type="Texture2D" uid="uid://d3xvjfuuljgo0" path="res://Assets/Textures/Cards/Front.png" id="1_pedkj"]
 [ext_resource type="Script" uid="uid://bqt8o8scntu57" path="res://Scenes/Card/card.gd" id="1_yw1pg"]
@@ -11,9 +11,75 @@
 default_font = ExtResource("5_r5dc4")
 default_font_size = 49
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5dc4"]
+size = Vector2(313.3333, 466.66666)
+
+[sub_resource type="Animation" id="Animation_r5dc4"]
+resource_name = "Hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_rffhp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6efv"]
+_data = {
+&"Hover": SubResource("Animation_r5dc4"),
+&"RESET": SubResource("Animation_rffhp")
+}
+
 [node name="Card" type="Node2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_yw1pg")
+animate = null
+collision = null
 
 [node name="Front" type="Node2D" parent="."]
 
@@ -110,6 +176,7 @@ offset_right = 188.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="Rank_Top_Left" type="Label" parent="Front/Ranks/Control"]
 layout_mode = 1
@@ -158,3 +225,18 @@ visible = false
 position = Vector2(9.000036, 1.1265895)
 scale = Vector2(0.60542077, 0.60542077)
 texture = ExtResource("2_g0nif")
+
+[node name="HoverArea" type="Area2D" parent="."]
+scale = Vector2(1.2, 1.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
+position = Vector2(-1.0927517e-06, 7.947286e-06)
+shape = SubResource("RectangleShape2D_r5dc4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j6efv")
+}
+
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]

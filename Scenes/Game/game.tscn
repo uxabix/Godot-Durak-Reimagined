@@ -15,23 +15,17 @@ card_scene = ExtResource("1_mv0hc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="DeckContainer" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DeckContainer" type="Control" parent="CanvasLayer/Control"]
-layout_mode = 1
 anchor_left = 0.025
 anchor_top = 0.3
 anchor_right = 0.15
 anchor_bottom = 0.51
 grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="CardsCount" type="Label" parent="CanvasLayer/Control/DeckContainer"]
+[node name="CardsCount" type="Label" parent="CanvasLayer/DeckContainer"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.229
@@ -42,8 +36,9 @@ offset_bottom = 62.0
 theme = SubResource("Theme_i1e5p")
 text = "36"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="TrumpContainer" type="Control" parent="CanvasLayer/Control/DeckContainer"]
+[node name="TrumpContainer" type="Control" parent="CanvasLayer/DeckContainer"]
 layout_mode = 1
 anchor_left = 0.6
 anchor_top = 1.0
@@ -52,11 +47,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 rotation = 1.5707964
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="PreviewTrump" parent="CanvasLayer/Control/DeckContainer/TrumpContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewTrump" parent="CanvasLayer/DeckContainer/TrumpContainer" instance=ExtResource("1_mv0hc")]
 rank = 8
+animate = false
 
-[node name="CardsContainer" type="Control" parent="CanvasLayer/Control/DeckContainer"]
+[node name="CardsContainer" type="Control" parent="CanvasLayer/DeckContainer"]
 layout_mode = 1
 anchor_left = 0.3
 anchor_top = 1.0
@@ -64,12 +62,15 @@ anchor_right = 0.7
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="PreviewCard" parent="CanvasLayer/Control/DeckContainer/CardsContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewCard" parent="CanvasLayer/DeckContainer/CardsContainer" instance=ExtResource("1_mv0hc")]
 is_face_up = false
+animate = false
 
-[node name="PlayerHand" type="Control" parent="CanvasLayer/Control"]
-layout_mode = 1
+[node name="PlayerHand" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -80,41 +81,49 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="HandContainer" parent="CanvasLayer/Control/PlayerHand" instance=ExtResource("4_i1e5p")]
+[node name="HandContainer" parent="CanvasLayer/PlayerHand" instance=ExtResource("4_i1e5p")]
 vertical_offset = -20.0
 fan_angle = 30.0
 
-[node name="PreviewTrump2" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewTrump2" parent="CanvasLayer/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
 position = Vector2(-200, -20)
 rotation = -0.2617994
 suit = 3
+animate = true
 
-[node name="PreviewTrump3" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewTrump3" parent="CanvasLayer/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
 position = Vector2(-120, -43.51141)
 rotation = -0.15707964
 suit = 1
-rank = 1
+rank = 9
+animate = true
 
-[node name="PreviewTrump4" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewTrump4" parent="CanvasLayer/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
 position = Vector2(-40, -58.04226)
 rotation = -0.05235988
 suit = 2
 rank = 2
+animate = true
 
-[node name="PreviewTrump5" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewTrump5" parent="CanvasLayer/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
 position = Vector2(40, -58.04226)
 rotation = 0.05235988
 rank = 3
+animate = true
 
-[node name="PreviewTrump7" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewTrump7" parent="CanvasLayer/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
 position = Vector2(120, -43.51141)
 rotation = 0.15707964
 suit = 3
 rank = 4
+animate = true
 
-[node name="PreviewTrump8" parent="CanvasLayer/Control/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
+[node name="PreviewTrump8" parent="CanvasLayer/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
 position = Vector2(200, -20)
 rotation = 0.2617994
 suit = 1
 rank = 11
+animate = true
