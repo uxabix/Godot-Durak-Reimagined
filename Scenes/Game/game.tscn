@@ -52,7 +52,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PreviewTrump" parent="CanvasLayer/DeckContainer/TrumpContainer" instance=ExtResource("1_mv0hc")]
 rank = 8
-animate = false
 
 [node name="CardsContainer" type="Control" parent="CanvasLayer/DeckContainer"]
 layout_mode = 1
@@ -67,7 +66,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PreviewCard" parent="CanvasLayer/DeckContainer/CardsContainer" instance=ExtResource("1_mv0hc")]
 is_face_up = false
-animate = false
 
 [node name="PlayerHand" type="Control" parent="CanvasLayer"]
 layout_mode = 3

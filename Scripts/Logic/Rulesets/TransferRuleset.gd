@@ -7,5 +7,5 @@ func _init():
 	cards_in_hand = 6
 	translated_mode = true
 	use_jokers = false
-	suits = Card.ALL_SUITS
-	ranks = Card.ALL_RANKS.slice(4)
+	suits = cd.ALL_SUITS
+	ranks = cd.ALL_RANKS.slice(4)

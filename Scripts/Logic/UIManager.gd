@@ -5,7 +5,6 @@ var card_hovered = null:
 	set(value):
 		card_hovered = value
 		set_collisions()
-		print(card_hovered)
 
 var player_hand: HandContainer
 
