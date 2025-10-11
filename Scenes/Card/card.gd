@@ -34,6 +34,7 @@ const cd = preload("res://Scripts/Defines/card_defines.gd")
 func flip():
 	$Front.visible = is_face_up
 	$Back.visible = not is_face_up
+	$HoverArea/CollisionShape2D.disabled = not is_face_up
 
 # Set the textures for suit and rank images based on current card values
 func set_textures():
@@ -98,3 +99,7 @@ func _on_hover_area_mouse_exited() -> void:
 	if not animate: return
 	$AnimationPlayer.play_backwards("Hover")
 	UiManager.card_hovered = null
+
+
+func get_size() -> Vector2:
+	return $Front/Front.texture.get_size() * $Front/Front.scale * scale

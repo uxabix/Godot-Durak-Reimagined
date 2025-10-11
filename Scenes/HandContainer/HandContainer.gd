@@ -2,12 +2,31 @@
 extends Node2D
 class_name HandContainer
 
-@export var spacing: float = 80.0
-@export var y_spacing: float = 40.0
-@export var vertical_offset: float = 0.0
-@export var fan_angle: float = 18.0
+@export var spacing: float = 80.0:
+	set(value):
+		spacing = value
+		update_layout()
+@export var y_spacing: float = 40.0:
+	set(value):
+		y_spacing = value
+		update_layout()
+@export var vertical_offset: float = 0.0:
+	set(value):
+		vertical_offset = value
+		update_layout()
+@export var fan_angle: float = 18.0:
+	set(value):
+		fan_angle = value
+		update_layout()
 @export var animate: bool = true
-@export var animation_time: float = 0.18
+@export var animation_time: float = 0.18:
+	set(value):
+		animation_time = value
+		update_layout()
+@export var is_face_up: bool = true:
+	set(value):
+		is_face_up = value
+		flip_cards()  # Update the cards visibility when this property changes
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -65,3 +84,13 @@ func update_layout() -> void:
 		else:
 			node.position = target_pos
 			node.rotation = target_rot
+
+
+func flip_cards():
+	for child in get_children():
+		if child.has_method("flip"):
+			child.is_face_up = is_face_up
+
+
+func show_cards():
+	pass
