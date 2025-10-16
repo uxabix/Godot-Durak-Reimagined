@@ -111,8 +111,8 @@ func update_layout() -> void:
 	var required_width := (hands.size() * max_size + (hands.size() + 1) * min_margin) / scale.x
 	if required_width > container_width:
 		for hand in hands:
-			hand.scale.x = .9
-			hand.scale.y = .9
+			hand.scale.x = container_width / required_width
+			hand.scale.y = container_width / required_width
 	else:
 		for hand in hands:
 			hand.scale.x = 1
