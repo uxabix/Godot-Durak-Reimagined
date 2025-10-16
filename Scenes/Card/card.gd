@@ -2,59 +2,79 @@
 extends Node2D
 class_name Card
 
-# Preload the Card definitions containing enums and helper functions
+# ------------------------------------------------------------------------------
+# Card
+# Represents a single playing card with a rank, suit, and orientation.
+# The card can display its front or back texture, react to mouse hover,
+# and optionally animate when hovered or flipped.
+# ------------------------------------------------------------------------------
+
+# Preload definitions containing enums and helper utilities for suits/ranks
 const cd = preload("res://Scripts/Defines/card_defines.gd")
 
-# Indicates whether the card is face-up (true) or face-down (false)
+# ------------------------------------------------------------------------------
+# Exported Properties
+# ------------------------------------------------------------------------------
+
+# Indicates whether the card is currently face-up (true) or face-down (false)
 @export var is_face_up: bool = true:
 	set(value):
 		is_face_up = value
-		flip()  # Update the card's visibility when this property changes
+		flip()  # Update card side visibility when this property changes
 
-# Suit of the card (Hearts, Spades, etc.)
+# Suit of the card (e.g. Hearts, Spades, Clubs, Diamonds)
 @export var suit: cd.Suit:
 	set(value):
 		suit = value
-		set_textures()  # Update textures when suit changes
+		set_textures()  # Refresh textures when suit changes
 
-# Rank of the card (2, 3, ..., King, Ace)
+# Rank of the card (2–10, Jack, Queen, King, Ace)
 @export var rank: cd.Rank:
 	set(value):
 		rank = value
-		set_textures()  # Update textures according to the rank
-		set_text()      # Updaste rank text if applicable
+		set_textures()  # Update textures for new rank
+		set_text()      # Update displayed rank label
 
+# Enables card hover animation when true
 @export var animate: bool = false
+
+# Enables or disables the collision area for hover detection
 @export var collision: bool = true:
-	set (value):
+	set(value):
 		collision = value
 		$HoverArea/CollisionShape2D.disabled = not value
 
-# Flip the card to show either front or back
-func flip():
+
+# ------------------------------------------------------------------------------
+# Visual and Interaction Logic
+# ------------------------------------------------------------------------------
+
+# Flips the card to show front (face-up) or back (face-down)
+func flip() -> void:
 	$Front.visible = is_face_up
 	$Back.visible = not is_face_up
 	$HoverArea/CollisionShape2D.disabled = not is_face_up
 
-# Set the textures for suit and rank images based on current card values
-func set_textures():
-	# Update suit images
+
+# Updates suit and rank textures based on the current card properties
+func set_textures() -> void:
+	# Update all small suit icons
 	for i in $Front/Suits.get_children():
 		i.texture = load("res://Assets/Textures/Cards/Suits/"
 			+ cd.get_suit_name(suit) + "/Suit.png")
-	
-	# Determine whether rank has a dedicated texture
+
+	# Determine if the rank has a dedicated image (e.g., Jack, Queen, King)
 	$Front/Images/Rank.visible = rank in cd.HAS_TEXTURE
 	$Front/Images/Suits.visible = not $Front/Images/Rank.visible
-	
+
 	if $Front/Images/Rank.visible:
-		# Load the rank texture if it exists
+		# Load and display the dedicated rank image
 		$Front/Images/Rank.texture = load("res://Assets/Textures/Cards/Suits/"
 			+ cd.get_suit_name(suit) + "/Ranks/"
 			+ cd.get_rank_name(rank) + ".png")
 	else:
-		# Otherwise, use pattern overlay for the rank
-		var i = 0
+		# Use pattern overlay when rank has no dedicated texture
+		var i := 0
 		for image in $Front/Images/Suits.get_children():
 			image.visible = cd.patterns[rank][i]
 			image.texture = load("res://Assets/Textures/Cards/Suits/"
@@ -62,44 +82,60 @@ func set_textures():
 			i += 1
 
 
-# Set textual representation of the card rank (for UI labels)
+# Updates the textual label representation of the card's rank
 func set_text() -> void:
 	for i in $Front/Ranks/Control.get_children():
 		var card_name: String = cd.get_rank_name(rank)
-		# If rank name is empty, fallback to numerical value
+		# Fallback to numeric value if rank name is empty
 		card_name = str(rank + cd.FIRST_CARD_VALUE) if card_name == "" else card_name
-		# Display abbreviated name if too long
+		# Shorten text if too long (e.g., "Queen" → "Q")
 		i.text = card_name if len(card_name) < 3 else card_name[0]
 
 
+# Initializes the card with given data (typically from CardData resource)
 func init(data: CardData) -> void:
 	suit = data.suit
 	rank = data.rank
 
 
+# ------------------------------------------------------------------------------
+# Lifecycle
+# ------------------------------------------------------------------------------
 
-# Called when the node enters the scene tree
 func _ready() -> void:
 	set_textures()
 	set_text()
 
 
-# Process function called every frame (currently unused)
-func _process(delta: float) -> void:
+# Currently unused, reserved for per-frame updates (e.g., animations)
+func _process(_delta: float) -> void:
 	pass
 
 
+# ------------------------------------------------------------------------------
+# Hover Events
+# ------------------------------------------------------------------------------
+
+# Triggered when the mouse cursor enters the card's hover area
 func _on_hover_area_mouse_entered() -> void:
-	if not animate: return
+	if not animate:
+		return
 	$AnimationPlayer.play("Hover")
 	UiManager.card_hovered = get_index()
 
 
+# Triggered when the mouse cursor leaves the card's hover area
 func _on_hover_area_mouse_exited() -> void:
-	if not animate: return
+	if not animate:
+		return
 	$AnimationPlayer.play_backwards("Hover")
 	UiManager.card_hovered = null
 
 
+# ------------------------------------------------------------------------------
+# Utility
+# ------------------------------------------------------------------------------
+
+# Returns the card's size in world units (scaled)
 func get_size() -> Vector2:
 	return $Front/Front.texture.get_size() * $Front/Front.scale * scale

@@ -4,14 +4,15 @@ class_name EnemyHandContainer
 
 # ------------------------------------------------------------------------------
 # EnemyHandContainer
-# Evenly distributes child "hand" nodes horizontally within the parent Control's width.
-# Each child node represents a single enemy hand (Node2D), which may contain cards.
-# The container assumes that there is enough space to fit all hands with equal spacing.
+# Evenly distributes child "hand" nodes (Node2D) horizontally within the parent Control's width.
+# Each hand node typically contains multiple card nodes.
+# This container assumes sufficient horizontal space to fit all hands with uniform spacing.
 # ------------------------------------------------------------------------------
 
-@export var animate: bool = true        # Enable smooth hand movement animation
-@export var animation_time: float = 0.2 # Animation duration (seconds)
-@export var min_margin: float = 30
+# Layout configuration parameters
+@export var animate: bool = true        # Enables smooth transition when hands move
+@export var animation_time: float = 0.2 # Duration of hand movement animation (in seconds)
+@export var min_margin: float = 30      # Minimum horizontal spacing between hands
 
 # ------------------------------------------------------------------------------
 # Lifecycle
@@ -69,7 +70,8 @@ func get_corner_world_position(center: Vector2, size: Vector2, rotation: float, 
 
 
 # ------------------------------------------------------------------------------
-# Calculates the horizontal size of a given hand (Node2D)
+# Calculates the total horizontal size of a given hand (Node2D).
+# The size is derived from the positions of its first and last card nodes.
 # ------------------------------------------------------------------------------
 func get_hand_size(node: Node2D) -> float:
 	var count = node.get_child_count()
@@ -83,7 +85,9 @@ func get_hand_size(node: Node2D) -> float:
 	return (right_coord - left_coord).length()
 	
 # ------------------------------------------------------------------------------
-# Core layout logic: evenly distribute all hands across container width
+# Core layout routine.
+# Evenly distributes all hand nodes across the available container width.
+# Automatically scales hands down if their total required width exceeds container width.
 # ------------------------------------------------------------------------------
 func update_layout() -> void:
 	var count := get_child_count()
@@ -118,7 +122,8 @@ func update_layout() -> void:
 			hand.scale.x = 1
 			hand.scale.y = 1
 
-	# Apply positions
+	# Position each hand evenly across the container width.
+	# Optionally animate movement if 'animate' is enabled.
 	for i in range(count):
 		var child := hands[i]
 		var target_x := spacing * (i + 1) / scale.x

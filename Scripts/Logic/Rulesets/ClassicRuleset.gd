@@ -1,6 +1,10 @@
 class_name ClassicRuleset
 extends RulesetBase
 
+##
+# Classic ruleset — no card translation.
+# Uses a standard 36-card deck without jokers.
+##
 func _init():
 	name = "Classic 36 cards"
 	cards_in_hand = 6
@@ -9,6 +13,9 @@ func _init():
 	suits = cd.ALL_SUITS
 	ranks = cd.ALL_RANKS.slice(4)
 
-# Classic rules do not allow transfer
+
+##
+# In classic rules, transferring cards is not allowed.
+##
 func can_transfer(card, attack_card) -> bool:
 	return false
