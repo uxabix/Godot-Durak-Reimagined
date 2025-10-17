@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HandContainerAppearanceData" load_steps=2 format=3 uid="uid://ljpbhmsx4ie6"]
+
+[ext_resource type="Script" uid="uid://cv60qsarpj8kv" path="res://Scripts/Entities/Resources/HandContainerAppearance/HandContainerAppearanceData.gd" id="1_ouqk0"]
+
+[resource]
+script = ExtResource("1_ouqk0")
+spacing = 25.0
+vertical_offset = -20.0
+fan_angle = 50.0
+is_face_up = false
+metadata/_custom_type_script = "uid://cv60qsarpj8kv"

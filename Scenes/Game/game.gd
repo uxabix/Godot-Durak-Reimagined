@@ -9,7 +9,7 @@ class_name GameTable
 # - Initializing the game state and player UI references.
 # ------------------------------------------------------------------------------
 
-const game_defines = preload("res://Scripts/Defines/game_defines.gd")
+@export var player_appearance: CardAppearanceData
 
 @export var deck: Node;
 
@@ -17,13 +17,19 @@ const game_defines = preload("res://Scripts/Defines/game_defines.gd")
 # Lifecycle
 # ------------------------------------------------------------------------------
 
+func clear_players_containers():
+	pass
+
+func init_players():
+	pass
+
 # Called once when the node enters the scene tree
 func _ready() -> void:
 	UiManager.remove_preview_nodes(self)
 	GameManager.start_game()
 	deck.update_deck(GameManager.deck)
 	UiManager.player_hand = $CanvasLayer/PlayerHand/HandContainer
-	$CanvasLayer/PlayerHand/HandContainer.set_cards(GameManager.current_player.hand, game_defines.player_appearance)
+	$CanvasLayer/PlayerHand/HandContainer.set_cards(GameManager.current_player.hand, player_appearance)
 
 
 # Called every frame (currently unused)

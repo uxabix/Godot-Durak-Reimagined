@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardAppearanceData" load_steps=2 format=3 uid="uid://j5mwlrh8fy5p"]
+
+[ext_resource type="Script" uid="uid://bkcib8r06n1jg" path="res://Scripts/Entities/Resources/CardAppearance/CardAppearanceData.gd" id="1_jxdcx"]
+
+[resource]
+script = ExtResource("1_jxdcx")
+cards_hidden = true
+metadata/_custom_type_script = "uid://bkcib8r06n1jg"
