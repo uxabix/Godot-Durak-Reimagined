@@ -1,15 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://c21jbfo7ww31x"]
+[gd_scene load_steps=6 format=3 uid="uid://c21jbfo7ww31x"]
 
 [ext_resource type="PackedScene" uid="uid://dxr7phpxd7qol" path="res://Scenes/Card/card.tscn" id="1_mv0hc"]
 [ext_resource type="Script" uid="uid://ci2dpyf87xojq" path="res://Scenes/Game/game.gd" id="1_qxfds"]
-[ext_resource type="Resource" uid="uid://b8h6ykemi6ohw" path="res://Scripts/Entities/Resources/CardAppearance/Variants/Player.tres" id="2_flgk0"]
 [ext_resource type="PackedScene" uid="uid://bqc61ptdaq64p" path="res://Scenes/DeckContainer/deck_container.tscn" id="3_ciybh"]
 [ext_resource type="PackedScene" uid="uid://r3hawph0ssen" path="res://Scenes/EnemyHandContainer/EnemyHandContainer.tscn" id="4_ciybh"]
 [ext_resource type="PackedScene" uid="uid://drahpkjcher6g" path="res://Scenes/HandContainer/HandContainer.tscn" id="4_i1e5p"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("deck")]
 script = ExtResource("1_qxfds")
-player_appearance = ExtResource("2_flgk0")
 deck = NodePath("CanvasLayer/DeckContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -27,10 +25,6 @@ scale = Vector2(0.75, -0.75)
 
 [node name="HandContainer7" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(384, 0)
-spacing = 25.0
-vertical_offset = -20.0
-fan_angle = 50.0
-is_face_up = false
 
 [node name="PreviewTrump2" parent="CanvasLayer/EnemyContainer/EnemyHandContainer/HandContainer7" instance=ExtResource("1_mv0hc")]
 position = Vector2(-62.5, -20)
@@ -80,10 +74,6 @@ animate = true
 
 [node name="HandContainer10" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(768, 0)
-spacing = 25.0
-vertical_offset = -20.0
-fan_angle = 50.0
-is_face_up = false
 
 [node name="PreviewTrump2" parent="CanvasLayer/EnemyContainer/EnemyHandContainer/HandContainer10" instance=ExtResource("1_mv0hc")]
 position = Vector2(-62.5, -20)
@@ -133,10 +123,6 @@ animate = true
 
 [node name="HandContainer11" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(1152, 0)
-spacing = 25.0
-vertical_offset = -20.0
-fan_angle = 50.0
-is_face_up = false
 
 [node name="PreviewTrump2" parent="CanvasLayer/EnemyContainer/EnemyHandContainer/HandContainer11" instance=ExtResource("1_mv0hc")]
 position = Vector2(-62.5, -20)
@@ -200,8 +186,6 @@ mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HandContainer" parent="CanvasLayer/PlayerHand" instance=ExtResource("4_i1e5p")]
-vertical_offset = -20.0
-fan_angle = 30.0
 
 [node name="PreviewTrump2" parent="CanvasLayer/PlayerHand/HandContainer" instance=ExtResource("1_mv0hc")]
 position = Vector2(-200, -20)

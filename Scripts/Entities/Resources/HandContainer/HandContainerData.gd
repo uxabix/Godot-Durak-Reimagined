@@ -1,4 +1,4 @@
-class_name HandContainerAppearanceData
+class_name HandContainerData
 extends Resource
 
 @export var spacing: float = 80.0

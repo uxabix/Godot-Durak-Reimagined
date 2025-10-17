@@ -9,8 +9,7 @@ class_name GameTable
 # - Initializing the game state and player UI references.
 # ------------------------------------------------------------------------------
 
-@export var player_appearance: CardAppearanceData
-
+@export var player_card_appearance: CardAppearanceData = preload("res://Scripts/Entities/Resources/CardAppearance/Variants/Player.tres")
 @export var deck: Node;
 
 # ------------------------------------------------------------------------------
@@ -18,7 +17,9 @@ class_name GameTable
 # ------------------------------------------------------------------------------
 
 func clear_players_containers():
-	pass
+	for child in $CanvasLayer/EnemyContainer/EnemyHandContainer.get_children():
+		if "HandContainer" in child.name:
+			child.queue_free()
 
 func init_players():
 	pass
@@ -29,7 +30,7 @@ func _ready() -> void:
 	GameManager.start_game()
 	deck.update_deck(GameManager.deck)
 	UiManager.player_hand = $CanvasLayer/PlayerHand/HandContainer
-	$CanvasLayer/PlayerHand/HandContainer.set_cards(GameManager.current_player.hand, player_appearance)
+	$CanvasLayer/PlayerHand/HandContainer.set_cards(GameManager.current_player.hand, player_card_appearance)
 
 
 # Called every frame (currently unused)
