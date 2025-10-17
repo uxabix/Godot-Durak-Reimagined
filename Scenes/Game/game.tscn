@@ -1,72 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://c21jbfo7ww31x"]
+[gd_scene load_steps=6 format=3 uid="uid://c21jbfo7ww31x"]
 
 [ext_resource type="PackedScene" uid="uid://dxr7phpxd7qol" path="res://Scenes/Card/card.tscn" id="1_mv0hc"]
 [ext_resource type="Script" uid="uid://ci2dpyf87xojq" path="res://Scenes/Game/game.gd" id="1_qxfds"]
-[ext_resource type="FontFile" uid="uid://g6hwsrh5md1m" path="res://Assets/Fonts/OldNewspaperTypes-Regular.ttf" id="3_qikps"]
+[ext_resource type="PackedScene" uid="uid://bqc61ptdaq64p" path="res://Scenes/DeckContainer/deck_container.tscn" id="3_ciybh"]
 [ext_resource type="PackedScene" uid="uid://r3hawph0ssen" path="res://Scenes/EnemyHandContainer/EnemyHandContainer.tscn" id="4_ciybh"]
 [ext_resource type="PackedScene" uid="uid://drahpkjcher6g" path="res://Scenes/HandContainer/HandContainer.tscn" id="4_i1e5p"]
 
-[sub_resource type="Theme" id="Theme_i1e5p"]
-default_font = ExtResource("3_qikps")
-default_font_size = 50
-
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("deck")]
 script = ExtResource("1_qxfds")
-card_scene = ExtResource("1_mv0hc")
+deck = NodePath("CanvasLayer/DeckContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DeckContainer" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchor_left = 0.025
-anchor_top = 0.3
-anchor_right = 0.15
-anchor_bottom = 0.51
-grow_vertical = 2
-mouse_filter = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="CardsCount" type="Label" parent="CanvasLayer/DeckContainer"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.229
-anchor_right = 0.234
-offset_left = -16.848
-offset_right = 39.152
-offset_bottom = 62.0
-theme = SubResource("Theme_i1e5p")
-text = "36"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TrumpContainer" type="Control" parent="CanvasLayer/DeckContainer"]
-layout_mode = 1
-anchor_left = 0.6
-anchor_top = 1.0
-anchor_right = 0.6
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-rotation = 1.5707964
-mouse_filter = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="PreviewTrump" parent="CanvasLayer/DeckContainer/TrumpContainer" instance=ExtResource("1_mv0hc")]
-rank = 8
-
-[node name="CardsContainer" type="Control" parent="CanvasLayer/DeckContainer"]
-layout_mode = 1
-anchor_left = 0.3
-anchor_top = 1.0
-anchor_right = 0.7
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="PreviewCard" parent="CanvasLayer/DeckContainer/CardsContainer" instance=ExtResource("1_mv0hc")]
-is_face_up = false
+[node name="DeckContainer" parent="CanvasLayer" instance=ExtResource("3_ciybh")]
 
 [node name="EnemyContainer" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -79,7 +25,7 @@ scale = Vector2(0.75, -0.75)
 
 [node name="HandContainer7" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(256, 0)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.8332895, 0.8332895)
 spacing = 25.0
 vertical_offset = -20.0
 fan_angle = 50.0
@@ -133,7 +79,7 @@ animate = true
 
 [node name="HandContainer8" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(512, 0)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.8332895, 0.8332895)
 spacing = 25.0
 vertical_offset = -20.0
 fan_angle = 50.0
@@ -187,7 +133,7 @@ animate = true
 
 [node name="HandContainer9" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(768, 0)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.8332895, 0.8332895)
 spacing = 25.0
 vertical_offset = -20.0
 fan_angle = 50.0
@@ -241,7 +187,7 @@ animate = true
 
 [node name="HandContainer10" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(1024, 0)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.8332895, 0.8332895)
 spacing = 25.0
 vertical_offset = -20.0
 fan_angle = 50.0
@@ -295,7 +241,7 @@ animate = true
 
 [node name="HandContainer11" parent="CanvasLayer/EnemyContainer/EnemyHandContainer" instance=ExtResource("4_i1e5p")]
 position = Vector2(1280, 0)
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.8332895, 0.8332895)
 spacing = 25.0
 vertical_offset = -20.0
 fan_angle = 50.0

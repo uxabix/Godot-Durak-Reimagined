@@ -11,7 +11,7 @@ var ruleset: RulesetBase = preload("res://Scripts/Logic/Rulesets/ClassicRuleset.
 var deck: Deck = Deck.new()                    ## Main deck used in the current game
 var discard_pile: DiscardPile                  ## Pile for discarded cards
 var players: Array[Player] = []                ## List of all players (human and bots)
-
+var current_player: Player
 
 ##
 # Creates and initializes players.
@@ -24,6 +24,12 @@ func set_players(player_count: int, bot_count: int = 0) -> void:
 		player.type = "Player" if i < player_count else "Bot"
 		players.append(player)
 
+##
+# Update trump suit for each player
+##
+func notify_players_trump():
+	for player in players:
+		player.trump = trump
 
 ##
 # Starts a new game session.
@@ -31,20 +37,18 @@ func set_players(player_count: int, bot_count: int = 0) -> void:
 ##
 func start_game() -> void:
 	set_players(1, 2)
+	current_player = players[0]
 	self.ruleset = ruleset
 	deck = Deck.new()
 	deck.init(ruleset)
 	trump = deck.get_first().suit
+	notify_players_trump()
 	discard_pile = DiscardPile.new()
 
 	# Deal cards to each player
 	for player in players:
 		for i in range(ruleset.cards_in_hand):
-			player.hand.append(deck.draw_card())
-			
-	# Debug output
-	for i in players:
-		print(i.hand)
+			player.add_card(deck.draw_card())
 
 
 ##

@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqc61ptdaq64p"]
+
+[ext_resource type="Script" uid="uid://cpyqe4ehxxm5r" path="res://Scenes/DeckContainer/deck_container.gd" id="1_61wbx"]
+[ext_resource type="FontFile" uid="uid://g6hwsrh5md1m" path="res://Assets/Fonts/OldNewspaperTypes-Regular.ttf" id="1_lwjw5"]
+[ext_resource type="PackedScene" uid="uid://dxr7phpxd7qol" path="res://Scenes/Card/card.tscn" id="2_61wbx"]
+
+[sub_resource type="Theme" id="Theme_i1e5p"]
+default_font = ExtResource("1_lwjw5")
+default_font_size = 50
+
+[node name="DeckContainer" type="Control"]
+layout_mode = 3
+anchor_left = 0.025
+anchor_top = 0.3
+anchor_right = 0.15
+anchor_bottom = 0.51
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_61wbx")
+card_scene = ExtResource("2_61wbx")
+metadata/_edit_use_anchors_ = true
+
+[node name="CardsCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.229
+anchor_right = 0.234
+offset_left = -16.848
+offset_right = 39.152
+offset_bottom = 62.0
+theme = SubResource("Theme_i1e5p")
+text = "36"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TrumpContainer" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.6
+anchor_top = 1.0
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.5707964
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PreviewTrump" parent="TrumpContainer" instance=ExtResource("2_61wbx")]
+rank = 8
+
+[node name="CardsContainer" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 1.0
+anchor_right = 0.7
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PreviewCard" parent="CardsContainer" instance=ExtResource("2_61wbx")]
+is_face_up = false

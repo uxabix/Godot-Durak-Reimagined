@@ -44,6 +44,8 @@ class_name HandContainer
 		flip_cards()  # Update visibility of all cards when toggled
 
 
+var card_scene = preload("res://Scenes/Card/card.tscn")
+
 # ------------------------------------------------------------------------------
 # Lifecycle
 # ------------------------------------------------------------------------------
@@ -132,6 +134,20 @@ func flip_cards() -> void:
 			child.is_face_up = is_face_up
 
 
-# Reserved for future logic (e.g., card reveal or highlight animation)
+func set_cards(cards: Array[CardData], appearance: CardAppearanceData) -> void:
+	for child in get_children():
+		if child is Card:
+			remove_child(child)
+	for card_data: CardData in cards:
+		var card: Card = card_scene.instantiate()
+		card.is_face_up = false
+		if !appearance.cards_hidden:
+			card.init(card_data)
+			card.is_face_up = true
+		card.animate = appearance.is_current_player;
+		add_child(card)
+
+
+# Reserved for future logic
 func show_cards() -> void:
 	pass
