@@ -9,6 +9,7 @@ class_name Player
 const cd = preload("res://Scripts/Defines/card_defines.gd")
 
 var player_name: String                 ## Player display name
+var id                                  ## Player unique identifier
 var type                                ## Type of player (human, AI, etc.)
 var state                               ## Current game state (active, waiting, etc.)
 var strategy                            ## Strategy logic (for AI-controlled players)

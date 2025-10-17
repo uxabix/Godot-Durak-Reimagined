@@ -22,6 +22,7 @@ func set_players(player_count: int, bot_count: int = 0) -> void:
 	for i in range(player_count + bot_count):
 		var player: Player = Player.new()
 		player.type = "Player" if i < player_count else "Bot"
+		player.id = i
 		players.append(player)
 
 ##
@@ -36,7 +37,7 @@ func notify_players_trump():
 # Initializes players, deck, ruleset, and deals cards.
 ##
 func start_game() -> void:
-	set_players(1, 2)
+	set_players(1, 4)
 	current_player = players[0]
 	self.ruleset = ruleset
 	deck = Deck.new()
